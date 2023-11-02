@@ -2,7 +2,7 @@ import { setCookieWithExpireHour } from 'https://jscroot.github.io/cookie/croot.
 
 //token
 export function getTokenFromAPI() {
-  const tokenUrl = "https://us-central1-noted-slice-401902.cloudfunctions.net/gis5";
+  const tokenUrl = "https://us-central1-gcpgeospacial.cloudfunctions.net/gis";
   fetch(tokenUrl)
     .then(response => response.json())
     .then(tokenData => {
@@ -49,7 +49,7 @@ function ResponsePostLogin(response) {
   if (response && response.token) {
     console.log('Token User:', response.token);
     setCookieWithExpireHour('user_token', response.token, 2);
-    window.location.href = 'https://gis-ryaas.github.io/login';
+    window.location.href = 'https://gis-riziq.github.io/';
     alert("Selamat Datang")
   } else {
     alert('Login gagal. Silakan coba lagi.');
