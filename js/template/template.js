@@ -1,3 +1,3 @@
 
-export let URLLogin = `https://us-central1-noted-slice-401902.cloudfunctions.net/gis5`
+export let URLLogin = `https://us-central1-gcpgeospacial.cloudfunctions.net/gis`
 export let token = 'token';
