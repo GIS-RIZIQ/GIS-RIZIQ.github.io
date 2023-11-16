@@ -1,6 +1,6 @@
-import {map,idmarker} from '../config/config.js';
-import {insertMarkerCOG} from '../controller/marker.js';
-import {disposePopover} from '../controller/popup.js';
+import {map,idmarker} from '../config/configpeta.js';
+import {insertMarkerCOG} from './marker.js';
+import {disposePopover} from './popup.js';
 import {hide} from 'https://jscroot.github.io/element/croot.js';
 
 export function getAllCoordinates(){
@@ -24,10 +24,10 @@ export function getAllCoordinates(){
             totaldemand=totaldemand+Number(feature.get('volume'));
             Xcog=Xcog+feature.get('geometry').flatCoordinates[0]*Number(feature.get('volume'));
             Ycog=Ycog+feature.get('geometry').flatCoordinates[1]*Number(feature.get('volume'));
-        }
+          }
         );
-    }
-    i++;
+      }
+      i++;
     });
     console.log(pointlist);
     let x=Xcog/totaldemand;

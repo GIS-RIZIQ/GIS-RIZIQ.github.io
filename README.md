@@ -1,1 +1,1 @@
-# GIS-RIZIQ.github.io
+# gis-geos.github.io

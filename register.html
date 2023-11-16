@@ -13,7 +13,7 @@
     <meta name="msapplication-TileColor" content="#0ed3cf">
     <meta name="theme-color" content="#0ed3cf">
 
-    <meta property="og:image" content="https://tailwindcomponents.com/storage/4636/conversions/temp46635-ogimage.jpg?v=2023-11-16 16:25:45" />
+    <meta property="og:image" content="https://tailwindcomponents.com/storage/4636/conversions/temp46635-ogimage.jpg?v=2023-11-16 16:21:17" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="640" />
     <meta property="og:image:type" content="image/png" />
@@ -26,19 +26,16 @@
     <meta name="twitter:site" content="@TwComponents" />
     <meta name="twitter:title" content="Form Login by joker banny" />
     <meta name="twitter:description" content="Create Form Login and Use Flexbox and Positionig" />
-    <meta name="twitter:image" content="https://tailwindcomponents.com/storage/4636/conversions/temp46635-ogimage.jpg?v=2023-11-16 16:25:45" />
+    <meta name="twitter:image" content="https://tailwindcomponents.com/storage/4636/conversions/temp46635-ogimage.jpg?v=2023-11-16 16:21:17" />
 
     <link rel="canonical" href="https://tailwindcomponents.com/component/form-login-1" itemprop="URL">
     
     <title>Register</title>
 
             <script src="https://cdn.tailwindcss.com"></script>
+            <script type="module" src="./js/controller/controller_register.js"></script>
     </head>
 <body class="bg-gray-200">
-    <div class="fixed bottom-0 left-0 right-0 z-40 px-4 py-3 text-center text-white bg-gray-800">
-        This a Form Login by joker banny. 
-        <a class="text-gray-200 underline" href="https://tailwindcomponents.com/component/form-login-1">Component details</a>
-    </div>
     <div class="min-h-screen bg-purple-400 flex justify-center items-center">
 	<div class="absolute w-60 h-60 rounded-xl bg-purple-300 -top-5 -left-16 z-0 transform rotate-45 hidden md:block">
 	</div>
@@ -46,18 +43,25 @@
 	</div>
 	<div class="py-12 px-12 bg-white rounded-2xl shadow-xl z-20">
 		<div>
-			<h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">Register Akun</h1>
-			<p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Buat dulu akunnya biar bisa login</p>
-		</div>
-		<div class="space-y-4">
-			<input type="text" placeholder="Username" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
-			<input type="text" placeholder="Password" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
-    </div>
-			<div class="text-center mt-6">
-				<button class="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">Create Account</button>
-                <p class="mt-4 text-sm">Udah punya akun?<a href="index.html" class="underline cursor-pointer">Login</a></p>
-			</div>
-		</div>
+			<h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">Register</h1>
+			<p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer"></p>
+      </div>
+      <form id= "form" action="#">
+         <div class="data">
+            <label>Username</label>
+            <input type="text" id="username" placeholder="Username" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
+         </div>
+         <div class="data">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Password" class="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
+        </div>
+        
+        <div class="btn">
+         <button type="submit" class="py-3 w-64 text-xl text-white bg-purple-400 rounded-2xl">Submit</button>
+         <p class="mt-4 text-sm">Sudah punya akun?<a href="register.html" class="underline cursor-pointer">Sign In</a></p>
+      </div>
+      </form>
+      </div>
 		<div class="w-40 h-40 absolute bg-purple-300 rounded-full top-0 right-12 hidden md:block"></div>
 		<div
 			class="w-20 h-40 absolute bg-purple-300 rounded-full bottom-20 left-10 transform rotate-45 hidden md:block">
