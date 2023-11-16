@@ -1,65 +1,53 @@
-import { setCookieWithExpireHour } from 'https://jscroot.github.io/cookie/croot.js';
+import Map from 'https://cdn.skypack.dev/ol/Map.js';
+import View from 'https://cdn.skypack.dev/ol/View.js';
+import TileLayer from 'https://cdn.skypack.dev/ol/layer/Tile.js';
+import XYZ from 'https://cdn.skypack.dev/ol/source/XYZ.js';
+import OSM from 'https://cdn.skypack.dev/ol/source/OSM.js';
+import {fromLonLat} from 'https://cdn.skypack.dev/ol/proj.js';
+import Overlay from 'https://cdn.skypack.dev/ol/Overlay.js';
+import {container} from 'https://jscroot.github.io/element/croot.js';
 
-//token
-export function getTokenFromAPI() {
-  const tokenUrl = "https://us-central1-gcpgeospacial.cloudfunctions.net/gis";
-  fetch(tokenUrl)
-    .then(response => response.json())
-    .then(tokenData => {
-      if (tokenData.token) {
-        userToken = tokenData.token;
-        console.log('Token dari API:', userToken);
-      }
-    })
-    .catch(error => console.error('Gagal mengambil token:', error));
-}
-export function GetDataForm(){
-            const username = document.querySelector("#username").value;
-            const password = document.querySelector("#password").value;
-            console.log(password)
+const attributions = '<a href="https://petapedia.github.io/" target="_blank">&copy; PetaPedia Indonesia</a> ';
 
-            const data = {
-                username: username,
-                password: password
+const place = [100.590775, -0.457986];
 
-            };
-            return data
-}
-//login
-export function PostLogin() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+export let idmarker = {id:1};
 
+const basemap = new TileLayer({
+    source: new OSM({
+        attributions: attributions,
+      }),
+});
 
-  const data = {
-    username: username,
-    password: password
+const defaultstartmap = new View({
+  center: fromLonLat(place),
+  zoom: 18,
+});
 
-  };
-  return data;
-}
+export const overlay = new Overlay({
+    element: container('popup'),
+    autoPan: {
+      animation: {
+        duration: 250,
+      },
+    },
+  });
 
-export function AlertPost(value){
-    alert(value.message + "\nRegistrasi Berhasil")
-    window.location.href= "login.html"
-}
+export const popupinfo = new Overlay({
+    element: container('popupinfo'),
+    autoPan: {
+      animation: {
+        duration: 250,
+      },
+    },
+});
 
+export let map = new Map({
+  layers: [
+        basemap
+    ],
+  overlays: [overlay,popupinfo],
+  target: 'map',
+  view: defaultstartmap,
+});
 
-function ResponsePostLogin(response) {
-  if (response && response.token) {
-    console.log('Token User:', response.token);
-    setCookieWithExpireHour('user_token', response.token, 2);
-    window.location.href = 'https://farhanriziq01.github.io/GIS-CHAP4/';
-    alert("Selamat Datang")
-  } else {
-    alert('Login gagal. Silakan coba lagi.');
-  }
-}
-
-
-export function ResponsePost(result) {
-    AlertPost(result);
-}
-export function ResponseLogin(result) {
-  ResponsePostLogin(result)
-}

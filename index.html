@@ -1,37 +1,100 @@
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Login</title>
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-   </head>
-   <body>
-      <div class="center">
-         <input type="checkbox" id="show">
-         <label for="show" class="show-btn">Login Disini</label>
-         <div class="container">
-            <label for="show" class="close-btn fas fa-times" title="close"></label>
-            <div class="text">
-               Login Form
-            </div>
-            <form id= "formlogin" action="#">
-               <div class="data">
-                  <label>Username</label>
-                  <input type="text" id="username" required>
-               </div>
-               <div class="data">
-                  <label>Password</label>
-                  <input type="password" id="password" required>
-               </div>
-               <div class="btn">
-                  <div class="inner"></div>
-                  <button id="submit">login</button>
-               </div>
-            </form>
-         </div>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <title>Tugas Chapter 4 GCP dan mongoDB</title>
+    <a href="https://gis-riziq.github.io/" class="login-button">Login</a>
+  </head>
+  <body>
+    <h1 class="judul" style="text-align: center">Chapter 4 GCF dan mongoDB</h1>
+    <p>Nama : Farhan Riziq</p>
+    <p>NPM : 1214024</p>
+    <p>Kelas : D4TI 3A</p>
+    <div id="map"></div>
+    <div class="col-auto mt-4">
+      <span class="input-group">
+        <label class="input-group-text" for="type">Geometry type:</label>
+        <select class="form-select" id="type">
+          <option value="Point">Point</option>
+          <option value="LineString">LineString</option>
+          <option value="Polygon">Polygon</option>
+          <option value="Circle">Circle</option>
+          <option value="None">None</option>
+        </select>
+        <input class="form-control" type="button" value="Undo" id="undo" />
+      </span>
+    </div>
+    <input type="hidden" id="idmarker" name="idmarker" value="" />
+    <div id="popupinfo" class="ol-popup">
+      <b id="popupinfo-title"></b>
+      <div id="popupinfo-content"></div>
+      <div id="popupinfo-delete">
+        <input type="hidden" id="idmarker" name="idmarker" value="" />
+        <button id="hapusbutton" type="button">Hapus</button
+        ><button id="hitungcogbutton" type="button">Hitung COG</button><br />
       </div>
-   </body>
-   <script type="module" src="./js/controller/controller.js"></script>
+    </div>
+
+    <div id="popup" class="ol-popup">
+      <b id="popup-title">Input Center of Gravity</b
+      ><a href="#" id="popup-closer" class="ol-popup-closer"></a>
+      <div id="popup-content"></div>
+      <div id="popup-input">
+        Nama : <input type="text" id="name" name="name" required /><br />
+        Volume : <input type="text" id="volume" name="volume" required /><br />
+        <input type="hidden" id="long" name="long" value="" />
+        <input type="hidden" id="lat" name="lat" value="" />
+        <button id="insertmarkerbutton" type="button">Input</button><br />
+      </div>
+    </div>
+    <div id="info-table">
+      <div class="point-table">
+        <h1>Data Point</h1>
+        <table id="pointTable" border="1">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Coordinate</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody id="lokasi"></tbody>
+        </table>
+      </div>
+
+      <div class="polygon-table">
+        <h1>Data Polygon</h1>
+        <table id="polygonTable" border="1">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Coordinate</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody id="polygon"></tbody>
+        </table>
+      </div>
+
+      <div class="polyline-table">
+        <h1>Data Polyline</h1>
+        <table id="polylineTable" border="1">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Coordinate</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody id="line"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.1.0/dist/ol.js"></script>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/post.js"></script>
+  </body>
 </html>
