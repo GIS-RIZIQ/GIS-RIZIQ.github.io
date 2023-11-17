@@ -1,8 +1,21 @@
-import {setInner,addChild } from "https://jscroot.github.io/element/croot.js";
+import {setInner,addChild, getValue } from "https://jscroot.github.io/element/croot.js";
+import { setCookieWithExpireHour } from 'https://jscroot.github.io/cookie/croot.js';
 import {tableTemplate, tableRowClass, tableTag} from "../template/template.js";
 import {map} from '../config/configpeta.js';
 import Draw from 'https://cdn.skypack.dev/ol/interaction/Draw.js';
 
+export function getTokenFromAPI() {
+    const tokenUrl = "https://us-central1-gcpgeospacial.cloudfunctions.net/gis";
+    fetch(tokenUrl)
+      .then(response => response.json())
+      .then(tokenData => {
+        if (tokenData.token) {
+          userToken = tokenData.token;
+          console.log('Token dari API:', userToken);
+        }
+      })
+      .catch(error => console.error('Gagal mengambil token:', error));
+  }
 
 export function isiRowPoint(value){
     if (value.geometry.type === "Point") {
@@ -157,3 +170,49 @@ export function responseData(results){
     results.forEach(isiRowPolyline);
 }
 
+export function ResponsePostLogin(response) {
+    if (response && response.token) {
+      console.log('Token User:', response.token);
+      setCookieWithExpireHour('Login', response.token, 3);
+      window.location.href = 'index.html';
+      alert("Selamat Datang")
+    } else {
+      alert('Login gagal. Silakan coba lagi.');
+    }
+  }
+
+  export function ResponseLogin(result) {
+    ResponsePostLogin(result)
+  }
+
+export function PostLogin() {
+    const username = getValue("username");
+    const password = getValue("password");
+  
+    const data = {
+      username: username,
+      password: password
+    };
+    return data;
+  }
+
+  export function GetDataForm(){
+    const username = getValue("username");
+    const password = getValue("password");
+    console.log(password)
+
+    const data = {
+        username: username,
+        password: password
+    };
+    return data
+}
+
+export function AlertPost(value){
+    alert(value.message + "\nRegistrasi Berhasil")
+    window.location.href= "login.html"
+}
+
+export function ResponsePost(result) {
+    AlertPost(result);
+}
