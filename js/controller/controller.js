@@ -175,7 +175,7 @@ export function ResponsePostLogin(response) {
       console.log('Token User:', response.token);
       setCookieWithExpireHour('Login', response.token, 3);
       window.location.href = 'index.html';
-      alert("Selamat Datang")
+      alert("Hai Kamu Sudah Login")
     } else {
       alert('Login gagal. Silakan coba lagi.');
     }
